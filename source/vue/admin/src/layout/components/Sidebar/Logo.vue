@@ -22,7 +22,7 @@ export default {
   },
   data () {
     return {
-      title: '比特商店管理系统'
+      title: '后台管理系统'
     }
   }
 }
