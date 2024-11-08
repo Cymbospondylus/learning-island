@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="site.bzyl.bitstore.repository.ExamPaperQuestionCustomerAnswerMapper">
-  <resultMap id="BaseResultMap" type="site.bzyl.bitstore.domain.ExamPaperQuestionCustomerAnswer">
+<mapper namespace="site.bzyl.island.repository.ExamPaperQuestionCustomerAnswerMapper">
+  <resultMap id="BaseResultMap" type="site.bzyl.island.domain.ExamPaperQuestionCustomerAnswer">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="question_id" jdbcType="INTEGER" property="questionId" />
     <result column="exam_paper_id" jdbcType="INTEGER" property="examPaperId" />
@@ -33,7 +33,7 @@
     delete from t_exam_paper_question_customer_answer
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="site.bzyl.bitstore.domain.ExamPaperQuestionCustomerAnswer" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insert" parameterType="site.bzyl.island.domain.ExamPaperQuestionCustomerAnswer" useGeneratedKeys="true" keyProperty="id">
     insert into t_exam_paper_question_customer_answer (id, question_id, exam_paper_id,
       exam_paper_answer_id, question_type, subject_id,
       customer_score, question_score, question_text_content_id,
@@ -47,7 +47,7 @@
       #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{itemOrder,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="site.bzyl.bitstore.domain.ExamPaperQuestionCustomerAnswer" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="site.bzyl.island.domain.ExamPaperQuestionCustomerAnswer" useGeneratedKeys="true" keyProperty="id">
     insert into t_exam_paper_question_customer_answer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -144,7 +144,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="site.bzyl.bitstore.domain.ExamPaperQuestionCustomerAnswer">
+  <update id="updateByPrimaryKeySelective" parameterType="site.bzyl.island.domain.ExamPaperQuestionCustomerAnswer">
     update t_exam_paper_question_customer_answer
     <set>
       <if test="questionId != null">
@@ -192,7 +192,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="site.bzyl.bitstore.domain.ExamPaperQuestionCustomerAnswer">
+  <update id="updateByPrimaryKey" parameterType="site.bzyl.island.domain.ExamPaperQuestionCustomerAnswer">
     update t_exam_paper_question_customer_answer
     set question_id = #{questionId,jdbcType=INTEGER},
       exam_paper_id = #{examPaperId,jdbcType=INTEGER},
@@ -228,7 +228,7 @@
   </select>
 
 
-  <select id="studentPage" resultMap="BaseResultMap" parameterType="site.bzyl.bitstore.viewmodel.student.question.answer.QuestionPageStudentRequestVM">
+  <select id="studentPage" resultMap="BaseResultMap" parameterType="site.bzyl.island.viewmodel.student.question.answer.QuestionPageStudentRequestVM">
     SELECT
     <include refid="Base_Column_List"/>
     FROM t_exam_paper_question_customer_answer
@@ -262,7 +262,7 @@
   </select>
 
 
-  <select id="selectCountByDate"  resultType="site.bzyl.bitstore.domain.other.KeyValue">
+  <select id="selectCountByDate"  resultType="site.bzyl.island.domain.other.KeyValue">
 		SELECT create_time as name,COUNT(create_time) as value from
 		        (
 				  SELECT to_char(create_time,'yyyy-mm-dd') as create_time from t_exam_paper_question_customer_answer
