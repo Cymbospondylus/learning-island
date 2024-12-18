@@ -44,7 +44,7 @@ public class UserController extends BaseApiController {
     @RequestMapping(value = "/page/list", method = RequestMethod.POST)
     public RestResponse<PageInfo<UserResponseVM>> pageList(@RequestBody UserPageRequestVM model) {
         PageInfo<User> pageInfo = userService.userPage(model);
-        PageInfo<UserResponseVM> page = PageInfoHelper.copyMap(pageInfo, d -> UserResponseVM.from(d));
+        PageInfo<UserResponseVM> page = PageInfoHelper.copyMap(pageInfo, UserResponseVM::from);
         return RestResponse.ok(page);
     }
 

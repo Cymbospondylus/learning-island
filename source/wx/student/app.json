@@ -27,13 +27,13 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "主页",
         "iconPath": "/assets/tabBar/index.png",
         "selectedIconPath": "/assets/tabBar/index-select.png"
       },
       {
         "pagePath": "pages/exam/index/index",
-        "text": "试卷",
+        "text": "试题",
         "iconPath": "/assets/tabBar/exam.png",
         "selectedIconPath": "/assets/tabBar/exam-select.png"
       },
