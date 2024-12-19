@@ -3,15 +3,15 @@ package site.bzyl.framework.beans;
 public class PropertyValue {
     private String name;
     private String ref;
-    private String values;
+    private String value;
 
     public PropertyValue() {
     }
 
-    public PropertyValue(String name, String ref, String values) {
+    public PropertyValue(String name, String ref, String value) {
         this.name = name;
         this.ref = ref;
-        this.values = values;
+        this.value = value;
     }
 
     public String getName() {
@@ -30,11 +30,11 @@ public class PropertyValue {
         this.ref = ref;
     }
 
-    public String getValues() {
-        return values;
+    public String getValue() {
+        return value;
     }
 
-    public void setValues(String values) {
-        this.values = values;
+    public void setValue(String value) {
+        this.value = value;
     }
 }
