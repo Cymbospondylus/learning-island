@@ -137,7 +137,7 @@ export default {
           loginApi.login(this.loginForm).then(function (result) {
             if (result && result.code === 1) {
               _this.setUserName(_this.loginForm.userName)
-              _this.$router.push({ path: '/' })
+              _this.$router.push({ path: '/user/student/list' })
             } else {
               _this.loading = false
               _this.$message({

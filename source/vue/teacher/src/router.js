@@ -26,15 +26,7 @@ const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: '主页', icon: 'home', affix: true }
-      }
-    ]
+    redirect: '/user/student/list'
   },
   {
     path: '/user',
@@ -57,18 +49,30 @@ const constantRoutes = [
         name: 'UserStudentEdit',
         meta: { title: '学生编辑', noCache: true, activeMenu: '/user/student/list' },
         hidden: true
+      }
+    ]
+  },
+  {
+    path: '/education',
+    component: Layout,
+    name: 'EducationPage',
+    meta: {
+      title: '学科管理',
+      icon: 'education'
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'subject/list',
+        component: () => import('@/views/education/subject/list'),
+        name: 'EducationSubjectPage',
+        meta: { title: '学科列表', noCache: true }
       },
       {
-        path: 'admin/list',
-        component: () => import('@/views/user/admin/list'),
-        name: 'UserAdminPageList',
-        meta: { title: '管理员列表', noCache: true }
-      },
-      {
-        path: 'admin/edit',
-        component: () => import('@/views/user/admin/edit'),
-        name: 'UserAdminEdit',
-        meta: { title: '管理员编辑', noCache: true, activeMenu: '/user/admin/list' },
+        path: 'subject/edit',
+        component: () => import('@/views/education/subject/edit'),
+        name: 'EducationSubjectEditPage',
+        meta: { title: '学科编辑', noCache: true, activeMenu: '/education/subject/list' },
         hidden: true
       }
     ]
@@ -163,31 +167,6 @@ const constantRoutes = [
     ]
   },
   {
-    path: '/education',
-    component: Layout,
-    name: 'EducationPage',
-    meta: {
-      title: '教育管理',
-      icon: 'education'
-    },
-    alwaysShow: true,
-    children: [
-      {
-        path: 'subject/list',
-        component: () => import('@/views/education/subject/list'),
-        name: 'EducationSubjectPage',
-        meta: { title: '学科列表', noCache: true }
-      },
-      {
-        path: 'subject/edit',
-        component: () => import('@/views/education/subject/edit'),
-        name: 'EducationSubjectEditPage',
-        meta: { title: '学科编辑', noCache: true, activeMenu: '/education/subject/list' },
-        hidden: true
-      }
-    ]
-  },
-  {
     path: '/answer',
     component: Layout,
     name: 'AnswerPage',
@@ -230,24 +209,6 @@ const constantRoutes = [
     ]
   },
   {
-    path: '/log',
-    component: Layout,
-    name: 'LogPage',
-    meta: {
-      title: '日志中心',
-      icon: 'log'
-    },
-    alwaysShow: true,
-    children: [
-      {
-        path: 'user/list',
-        component: () => import('@/views/log/list'),
-        name: 'LogUserPage',
-        meta: { title: '用户日志', noCache: true }
-      }
-    ]
-  },
-  {
     path: '/profile',
     component: Layout,
     hidden: true,
@@ -266,8 +227,6 @@ const constantRoutes = [
     meta: { title: '404', noCache: true }
   }
 ]
-
-
 
 const router = new Router({
   routes: constantRoutes
