@@ -46,6 +46,7 @@ public class RestAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
                 site.bzyl.island.domain.User newUser = new site.bzyl.island.domain.User();
                 newUser.setUserName(user.getUserName());
                 newUser.setImagePath(user.getImagePath());
+                newUser.setRole(user.getRole());
                 RestUtil.response(response, SystemCode.OK.getCode(), SystemCode.OK.getMessage(), newUser);
             }
         } else {

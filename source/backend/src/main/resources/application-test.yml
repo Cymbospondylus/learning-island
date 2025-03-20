@@ -1,8 +1,0 @@
-logging:
-  path: /usr/log/bzyl/
-
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/bzyl
-    username: postgres
-    password: 123456
