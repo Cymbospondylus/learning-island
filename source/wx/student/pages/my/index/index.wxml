@@ -1,6 +1,6 @@
 <view class="userinfo">
   <block>
-    <image class="userinfo-avatar" src="{{info.imagePath}}"></image>
+    <image class="userinfo-avatar" src="/assets/default-avatar.jpg"></image>
     <text class="userinfo-nickname">{{info.userName}}</text>
   </block>
 </view>

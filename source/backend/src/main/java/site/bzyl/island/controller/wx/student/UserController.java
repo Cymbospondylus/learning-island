@@ -73,6 +73,7 @@ public class UserController extends BaseWXApiController {
         user.setLastActiveTime(new Date());
         user.setCreateTime(new Date());
         user.setDeleted(false);
+        user.setImagePath("/assets/default-avatar.jpg");
         userService.insertByFilter(user);
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
         userEventLog.setContent("欢迎 " + user.getUserName() + " 注册来到学习岛在线学习系统");
