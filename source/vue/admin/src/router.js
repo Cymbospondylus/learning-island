@@ -74,6 +74,31 @@ const constantRoutes = [
     ]
   },
   {
+    path: '/education',
+    component: Layout,
+    name: 'EducationPage',
+    meta: {
+      title: '学科管理',
+      icon: 'education'
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'subject/list',
+        component: () => import('@/views/education/subject/list'),
+        name: 'EducationSubjectPage',
+        meta: { title: '学科列表', noCache: true }
+      },
+      {
+        path: 'subject/edit',
+        component: () => import('@/views/education/subject/edit'),
+        name: 'EducationSubjectEditPage',
+        meta: { title: '学科编辑', noCache: true, activeMenu: '/education/subject/list' },
+        hidden: true
+      }
+    ]
+  },
+  {
     path: '/exam',
     component: Layout,
     name: 'ExamPage',
@@ -163,31 +188,6 @@ const constantRoutes = [
     ]
   },
   {
-    path: '/education',
-    component: Layout,
-    name: 'EducationPage',
-    meta: {
-      title: '教育管理',
-      icon: 'education'
-    },
-    alwaysShow: true,
-    children: [
-      {
-        path: 'subject/list',
-        component: () => import('@/views/education/subject/list'),
-        name: 'EducationSubjectPage',
-        meta: { title: '学科列表', noCache: true }
-      },
-      {
-        path: 'subject/edit',
-        component: () => import('@/views/education/subject/edit'),
-        name: 'EducationSubjectEditPage',
-        meta: { title: '学科编辑', noCache: true, activeMenu: '/education/subject/list' },
-        hidden: true
-      }
-    ]
-  },
-  {
     path: '/answer',
     component: Layout,
     name: 'AnswerPage',
@@ -266,9 +266,6 @@ const constantRoutes = [
     meta: { title: '404', noCache: true }
   }
 ]
-
-
-
 const router = new Router({
   routes: constantRoutes
 })
