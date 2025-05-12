@@ -1,0 +1,43 @@
+@startuml
+!define SPACING 40
+skinparam ParticipantPadding SPACING
+skinparam SequenceGroupBorderThickness 1
+
+participant "用户" as U
+participant "控制层" as C
+participant "业务层" as S
+participant "事件发布器" as E
+participant "日志监听器" as L
+participant "数据库" as D
+
+U -> C: 执行操作（如删除试题）
+activate C
+C -> S: 调用业务方法
+activate S
+S -> D: 更新数据状态\n(deleted=true)
+activate D
+D --> S: 更新成功
+deactivate D
+
+S -> S: 创建操作日志对象
+S -> E: 发布审计事件
+activate E
+E ->> L: 异步触发日志处理
+activate L
+E --> S: 事件发布完成
+deactivate E
+
+S --> C: 业务处理完成
+deactivate S
+C --> U: 返回操作结果
+deactivate C
+
+L -> D: 保存审计日志\n(操作人、时间、内容)
+activate D
+D --> L: 日志保存成功
+deactivate D
+deactivate L
+
+note over D #lightblue: 数据物理保留\n仅逻辑删除
+note over L #lightgreen: 异步记录\n不影响主流程
+@enduml
