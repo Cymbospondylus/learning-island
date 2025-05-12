@@ -1,0 +1,25 @@
+@startuml
+skinparam participantPadding 100
+skinparam minClassWidth 80
+skinparam sequenceArrowThickness 2
+
+actor 教师
+actor 学生
+participant 系统
+database 数据库
+
+教师 -> 系统: 创建消息
+教师 -> 系统: 选择接收学生
+教师 -> 系统: 编辑内容和参数
+系统 -> 数据库: 保存消息数据
+数据库 -> 系统: 确认保存成功
+系统 -> 学生: 推送消息通知
+学生 -> 系统: 查看消息列表
+系统 -> 数据库: 查询未读消息
+数据库 -> 系统: 返回消息数据
+系统 -> 学生: 显示消息内容
+学生 -> 系统: 阅读消息详情
+系统 -> 数据库: 更新已读状态
+数据库 -> 系统: 确认更新成功
+系统 -> 学生: 显示已读标记
+@enduml
